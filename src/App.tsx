@@ -11,7 +11,7 @@ function App() {
         <AppShell.List>123</AppShell.List>
         <AppShell.Footer>login</AppShell.Footer>
       </AppShell.SideBar>
-      <AppShell.Note>123213</AppShell.Note>
+      <AppShell.Note>AAAA</AppShell.Note>
     </AppShell.Root>
   );
 }

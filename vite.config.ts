@@ -21,6 +21,7 @@ export default defineConfig({
         background_color: "#e5e7eb",
         theme_color: "white",
         orientation: "portrait",
+        display_override: ["window-controls-overlay"],
         icons: [
           {
             src: "/web-app-manifest-192x192.png",

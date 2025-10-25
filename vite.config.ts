@@ -20,7 +20,6 @@ export default defineConfig({
         display: "standalone",
         background_color: "#e5e7eb",
         theme_color: "white",
-        display_override: ["window-controls-overlay"],
         orientation: "portrait",
         icons: [
           {

@@ -17,10 +17,10 @@ export default defineConfig({
         short_name: "Заметкус",
         start_url: "/",
         lang: "ru-RU",
-        display: "browser",
         background_color: "#e5e7eb",
-        theme_color: "white",
+        theme_color: "red",
         orientation: "portrait",
+        display: "standalone",
         display_override: ["window-controls-overlay"],
         icons: [
           {

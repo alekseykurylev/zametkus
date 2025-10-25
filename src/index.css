@@ -6,6 +6,6 @@
     }
 
     body {
-        @apply bg-[#161617];
+        @apply bg-gray-950;
     }
 }

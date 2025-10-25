@@ -17,7 +17,7 @@ export default defineConfig({
         short_name: "Заметкус",
         start_url: "/",
         lang: "ru-RU",
-        display: "standalone",
+        display: "browser",
         background_color: "#e5e7eb",
         theme_color: "white",
         orientation: "portrait",

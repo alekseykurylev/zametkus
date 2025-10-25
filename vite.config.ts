@@ -18,7 +18,7 @@ export default defineConfig({
         start_url: "/",
         lang: "ru-RU",
         background_color: "#e5e7eb",
-        theme_color: "red",
+        theme_color: "#e5e7eb",
         orientation: "portrait",
         display: "standalone",
         display_override: ["window-controls-overlay"],

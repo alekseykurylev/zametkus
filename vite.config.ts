@@ -17,11 +17,11 @@ export default defineConfig({
         short_name: "Заметкус",
         start_url: "/",
         lang: "ru-RU",
+        display: "standalone",
         background_color: "#e5e7eb",
         theme_color: "white",
         orientation: "portrait",
-        display: "standalone",
-        // display_override: ["window-controls-overlay"],
+        display_override: ["window-controls-overlay"],
         icons: [
           {
             src: "/web-app-manifest-192x192.png",

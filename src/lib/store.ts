@@ -1,12 +1,13 @@
 import { create } from "zustand";
-import { type Note, getAllNotes, putNote, delNote } from "./db";
+import { getAllNotes, putNote, delNote } from "./db";
 import { v4 as uuidv4 } from "uuid";
+import type { Note } from "./types.ts";
 
 type State = {
   notes: Note[];
   activeId?: string | null;
-  load: () => Promise<void>;
   actions: {
+    load: () => Promise<void>;
     createNote: () => Promise<Note>;
     updateNote: (id: string, data: Partial<Note>) => Promise<void>;
     deleteNote: (id: string) => Promise<void>;
@@ -16,16 +17,16 @@ type State = {
 
 const useNotesStore = create<State>((set, get) => ({
   notes: [],
-  load: async () => {
-    const notes = await getAllNotes();
-    notes.sort((a, b) => b.updatedAt - a.updatedAt);
-    set({ notes: notes, activeId: notes[0]?.id ?? null });
-  },
   actions: {
+    load: async () => {
+      const notes = await getAllNotes();
+      notes.sort((a, b) => b.updatedAt - a.updatedAt);
+      set({ notes: notes, activeId: notes[0]?.id ?? null });
+    },
     createNote: async () => {
       const note: Note = {
         id: uuidv4(),
-        title: "",
+        title: "Новая заметка",
         content: "",
         updatedAt: Date.now(),
       };
@@ -62,6 +63,9 @@ const useNotesStore = create<State>((set, get) => ({
 
 export const useNote = (id: string) =>
   useNotesStore((state) => state.notes.find((n) => n.id === id));
+
+export const useNoteActive = () => useNotesStore((state) => state.activeId);
+
 export const useNotes = () => useNotesStore((state) => state.notes);
-export const useLoad = () => useNotesStore((state) => state.load());
+
 export const useNoteActions = () => useNotesStore((state) => state.actions);

@@ -1,15 +1,9 @@
 import { openDB, type DBSchema } from "idb";
+import type { Note } from "./types.ts";
 
 const DB_NAME = "notes-db";
 const STORE = "notes";
 const DB_VERSION = 1;
-
-export type Note = {
-  id: string;
-  title?: string;
-  content: string;
-  updatedAt: number;
-};
 
 interface NotesDB extends DBSchema {
   [STORE]: {

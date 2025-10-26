@@ -61,7 +61,7 @@ const useNotesStore = create<State>((set, get) => ({
   },
 }));
 
-export const useNote = (id: string) =>
+export const useNote = (id?: string | null) =>
   useNotesStore((state) => state.notes.find((n) => n.id === id));
 
 export const useNoteActive = () => useNotesStore((state) => state.activeId);

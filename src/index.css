@@ -8,4 +8,30 @@
     body {
         @apply bg-zinc-900;
     }
+
+    :root {
+        overflow-wrap: break-word;
+        text-size-adjust: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .tiptap {
+        &.ProseMirror > * {
+            @apply relative;
+        }
+
+        &.ProseMirror {
+            @apply whitespace-pre-wrap outline-none caret-zinc-900;
+        }
+
+        &.ProseMirror p:not(:first-child) {
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+    }
+
 }

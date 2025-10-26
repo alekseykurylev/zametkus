@@ -4,9 +4,10 @@ import { cx } from "../../lib/cva.ts";
 import { useNoteActions } from "../../lib/store.ts";
 import type { Note } from "../../lib/types.ts";
 import { getNoteTitle } from "../../lib/helpers.ts";
+import { NoteToolbar } from "./note-toolbar.tsx";
 
-export function NoteEdit({ note }: { note?: Note }) {
-  const { updateNote } = useNoteActions();
+export function NoteEdit({ note }: { note: Note }) {
+  const { updateNote, deleteNote } = useNoteActions();
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -21,16 +22,24 @@ export function NoteEdit({ note }: { note?: Note }) {
         "aria-label": "Main content area, start typing to enter text.",
       },
     },
-    content: note?.content,
+    content: note.content,
     onUpdate({ editor }) {
       const content = editor.getJSON();
       const title = getNoteTitle(editor);
-      updateNote(note?.id ?? "", { title, content }).catch();
+      updateNote(note.id, { title, content }).catch();
+    },
+    onBlur: ({ editor }) => {
+      const isEmpty = editor.isEmpty;
+      if (isEmpty) {
+        deleteNote(note.id).catch();
+        return;
+      }
     },
   });
 
   return (
     <div className="flex h-full flex-col">
+      <NoteToolbar editor={editor} />
       <EditorContent
         editor={editor}
         role="presentation"

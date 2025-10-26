@@ -31,12 +31,9 @@ export function NoteEdit({ note }: { note?: Note }) {
 
   return (
     <div className="flex h-full flex-col">
-      <div>{note?.id}</div>
-      <div>{note?.title}</div>
       <EditorContent
         editor={editor}
         role="presentation"
-        // content={note?.content ?? ""}
         className={cx("grow overflow-y-auto *:h-full *:px-6")}
       />
     </div>

@@ -10,7 +10,8 @@ function App() {
 
   useEffect(() => {
     load().catch();
-  }, [load]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AppShell.Root>

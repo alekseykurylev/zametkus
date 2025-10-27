@@ -15,7 +15,7 @@ export function NotesList() {
             className={cx(note.id === activeId && "text-red-700")}
           >
             <div>{note.title || "Новая заметка"}</div>
-            <div>{note.updatedAt}</div>
+            <div>{new Date(note.updatedAt).toLocaleString()}</div>
           </button>
         </li>
       ))}

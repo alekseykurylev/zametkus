@@ -16,7 +16,8 @@ interface NotesDB extends DBSchema {
 const dbPromise = openDB<NotesDB>(DB_NAME, DB_VERSION, {
   upgrade(db) {
     if (!db.objectStoreNames.contains(STORE)) {
-      db.createObjectStore(STORE, { keyPath: "id" });
+      const store = db.createObjectStore(STORE, { keyPath: "id" });
+      store.createIndex("by-updatedAt", "updatedAt");
     }
   },
 });

@@ -1,6 +1,7 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import { CharacterCount } from "@tiptap/extensions";
 import StarterKit from "@tiptap/starter-kit";
+import { useDebouncedCallback } from "use-debounce";
 import { cx } from "../../lib/cva.ts";
 import { useNoteActions, useNotes } from "../../lib/store.ts";
 import type { Note } from "../../lib/types.ts";
@@ -11,6 +12,10 @@ import { NoteFooter } from "./note-footer.tsx";
 export function NoteEdit({ note }: { note: Note }) {
   const { updateNote, deleteNote } = useNoteActions();
   const notes = useNotes();
+
+  const debouncedUpdate = useDebouncedCallback((title, content) => {
+    updateNote(note.id, { title, content }).catch();
+  }, 200);
 
   const editor = useEditor({
     extensions: [StarterKit, CharacterCount],
@@ -29,7 +34,7 @@ export function NoteEdit({ note }: { note: Note }) {
     onUpdate({ editor }) {
       const content = editor.getJSON();
       const title = getNoteTitle(editor);
-      updateNote(note.id, { title, content }).catch();
+      debouncedUpdate(title, content);
     },
     onFocus: () => {
       if (notes[0].id !== note.id && notes[0].title?.length === 0) {

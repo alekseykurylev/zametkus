@@ -15,51 +15,65 @@ type State = {
   };
 };
 
-const useNotesStore = create<State>((set, get) => ({
-  notes: [],
-  actions: {
-    load: async () => {
-      const notes = await getAllNotes();
-      notes.sort((a, b) => b.updatedAt - a.updatedAt);
-      set({ notes: notes, activeId: notes[0]?.id ?? null });
-    },
-    createNote: async () => {
-      const note: Note = {
-        id: uuidv4(),
-        title: "Новая заметка",
-        content: "",
-        updatedAt: Date.now(),
-      };
-      await putNote(note);
-      set((state) => ({ notes: [note, ...state.notes], activeId: note.id }));
-      return note;
-    },
-    updateNote: async (id, data) => {
-      const note = get().notes.find((n) => n.id === id);
-      if (!note) return;
+const useNotesStore = create<State>((set, get) => {
+  return {
+    notes: [],
+    actions: {
+      load: async () => {
+        const notes = await getAllNotes();
+        notes.sort((a, b) => b.updatedAt - a.updatedAt);
+        set({ notes: notes, activeId: notes[0]?.id ?? null });
+      },
+      createNote: async () => {
+        const note: Note = {
+          id: uuidv4(),
+          title: "",
+          content: "",
+          updatedAt: Date.now(),
+        };
+        await putNote(note);
+        set((state) => ({ notes: [note, ...state.notes], activeId: note.id }));
+        return note;
+      },
+      updateNote: async (id, data) => {
+        const note = get().notes.find((n) => n.id === id);
+        if (!note) return;
 
-      const updatedNote = { ...note, ...data, updatedAt: Date.now() };
-      await putNote(updatedNote);
+        const updatedNote = { ...note, ...data, updatedAt: Date.now() };
+        await putNote(updatedNote);
 
-      set((state) => ({
-        notes: state.notes
-          .map((n) => (n.id === id ? updatedNote : n))
-          .sort((a, b) => b.updatedAt - a.updatedAt),
-        activeId: id,
-      }));
+        set((state) => ({
+          notes: state.notes
+            .map((n) => (n.id === id ? updatedNote : n))
+            .sort((a, b) => b.updatedAt - a.updatedAt),
+          activeId: id,
+        }));
+      },
+      deleteNote: async (id) => {
+        await delNote(id);
+        set((state) => {
+          const idx = state.notes.findIndex((n) => n.id === id);
+          const next = state.notes.filter((n) => n.id !== id);
+
+          let nextActive = state.activeId;
+
+          if (state.activeId === id) {
+            if (next.length === 0) {
+              nextActive = null;
+            } else if (idx < next.length) {
+              nextActive = next[idx].id;
+            } else {
+              nextActive = next[0].id;
+            }
+          }
+
+          return { notes: next, activeId: nextActive };
+        });
+      },
+      setActive: (id) => set({ activeId: id ?? null }),
     },
-    deleteNote: async (id) => {
-      await delNote(id);
-      set((state) => {
-        const next = state.notes.filter((n) => n.id !== id);
-        const nextActive =
-          state.activeId === id ? (next[0]?.id ?? null) : state.activeId;
-        return { notes: next, activeId: nextActive };
-      });
-    },
-    setActive: (id) => set({ activeId: id ?? null }),
-  },
-}));
+  };
+});
 
 export const useNote = (id?: string | null) =>
   useNotesStore((state) => state.notes.find((n) => n.id === id));

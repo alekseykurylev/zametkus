@@ -6,5 +6,9 @@ export function Note() {
   const note = useNote(activeId);
 
   if (!note) return null;
-  return <NoteEdit key={activeId} note={note} />;
+  return (
+    <div className="flex h-full flex-col">
+      <NoteEdit key={activeId} note={note} />
+    </div>
+  );
 }

@@ -1,16 +1,19 @@
 import { EditorContent, useEditor } from "@tiptap/react";
+import { CharacterCount } from "@tiptap/extensions";
 import StarterKit from "@tiptap/starter-kit";
 import { cx } from "../../lib/cva.ts";
-import { useNoteActions } from "../../lib/store.ts";
+import { useNoteActions, useNotes } from "../../lib/store.ts";
 import type { Note } from "../../lib/types.ts";
 import { getNoteTitle } from "../../lib/helpers.ts";
 import { NoteToolbar } from "./note-toolbar.tsx";
+import { NoteFooter } from "./note-footer.tsx";
 
 export function NoteEdit({ note }: { note: Note }) {
   const { updateNote, deleteNote } = useNoteActions();
+  const notes = useNotes();
 
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, CharacterCount],
     immediatelyRender: true,
     shouldRerenderOnTransaction: true,
     autofocus: "start",
@@ -28,23 +31,22 @@ export function NoteEdit({ note }: { note: Note }) {
       const title = getNoteTitle(editor);
       updateNote(note.id, { title, content }).catch();
     },
-    onBlur: ({ editor }) => {
-      const isEmpty = editor.isEmpty;
-      if (isEmpty) {
-        deleteNote(note.id).catch();
-        return;
+    onFocus: () => {
+      if (notes[0].id !== note.id && notes[0].title?.length === 0) {
+        deleteNote(notes[0].id).catch();
       }
     },
   });
 
   return (
-    <div className="flex h-full flex-col">
+    <>
       <NoteToolbar editor={editor} />
       <EditorContent
         editor={editor}
         role="presentation"
         className={cx("grow overflow-y-auto *:h-full *:px-6")}
       />
-    </div>
+      <NoteFooter editor={editor} />
+    </>
   );
 }

@@ -1,9 +1,7 @@
 import { type Editor, useEditorState } from "@tiptap/react";
-// import { useNoteActions } from "../../lib/store.ts";
+import { RemoveNote } from "./remove-note.tsx";
 
 export function NoteToolbar({ editor }: { editor: Editor }) {
-  // const { deleteNote } = useNoteActions();
-
   const editorState = useEditorState({
     editor,
     selector: (ctx) => {
@@ -58,11 +56,7 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           Redo
         </button>
       </div>
-      {/*<div>*/}
-      {/*  <button type="button" onClick={handleRemove} className="border">*/}
-      {/*    remove*/}
-      {/*  </button>*/}
-      {/*</div>*/}
+      <RemoveNote />
     </div>
   );
 }

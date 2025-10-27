@@ -9,7 +9,7 @@ export function CreateNote() {
     createNote().catch((e) => console.log(e));
   };
 
-  const isDisabled = !note || note?.content?.length === 0;
+  const isDisabled = note?.content?.length === 0;
 
   return (
     <button

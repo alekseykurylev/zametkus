@@ -1,5 +1,6 @@
 import { type Editor, useEditorState } from "@tiptap/react";
 import { RemoveNote } from "./remove-note.tsx";
+import { Bold, Redo, Undo } from "lucide-react";
 
 export function NoteToolbar({ editor }: { editor: Editor }) {
   const editorState = useEditorState({
@@ -24,29 +25,29 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           // className={editorState?.isBold ? "is-active border" : "border"}
           className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
-          Bold
+          <Bold size="16" />
         </button>
-        <button
-          type="button"
-          onClick={() => editor?.chain().focus().unsetAllMarks().run()}
-          className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
-        >
-          Clear marks
-        </button>
-        <button
-          type="button"
-          onClick={() => editor?.chain().focus().clearNodes().run()}
-          className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
-        >
-          Clear nodes
-        </button>
+        {/*<button*/}
+        {/*  type="button"*/}
+        {/*  onClick={() => editor?.chain().focus().unsetAllMarks().run()}*/}
+        {/*  className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"*/}
+        {/*>*/}
+        {/*  Clear marks*/}
+        {/*</button>*/}
+        {/*<button*/}
+        {/*  type="button"*/}
+        {/*  onClick={() => editor?.chain().focus().clearNodes().run()}*/}
+        {/*  className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"*/}
+        {/*>*/}
+        {/*  Clear nodes*/}
+        {/*</button>*/}
         <button
           type="button"
           onClick={() => editor?.chain().focus().undo().run()}
           disabled={!editorState?.canUndo}
           className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
-          Undo
+          <Undo size="16" />
         </button>
         <button
           type="button"
@@ -54,7 +55,7 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           disabled={!editorState?.canRedo}
           className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
-          Redo
+          <Redo size="16" />
         </button>
       </div>
       <RemoveNote />

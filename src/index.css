@@ -6,7 +6,7 @@
     }
 
     body {
-        @apply bg-zinc-900;
+        @apply bg-neutral-900 text-white;
     }
 
     :root {
@@ -23,7 +23,7 @@
         }
 
         &.ProseMirror {
-            @apply whitespace-pre-wrap outline-none caret-zinc-900;
+            @apply whitespace-pre-wrap outline-none caret-white ;
         }
 
         &.ProseMirror p:not(:first-child) {

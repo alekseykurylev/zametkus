@@ -21,21 +21,22 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           type="button"
           onClick={() => editor?.chain().focus().toggleBold().run()}
           disabled={!editorState?.canBold}
-          className={editorState?.isBold ? "is-active border" : "border"}
+          // className={editorState?.isBold ? "is-active border" : "border"}
+          className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
           Bold
         </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().unsetAllMarks().run()}
-          className="border"
+          className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
           Clear marks
         </button>
         <button
           type="button"
           onClick={() => editor?.chain().focus().clearNodes().run()}
-          className="border"
+          className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
           Clear nodes
         </button>
@@ -43,7 +44,7 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           type="button"
           onClick={() => editor?.chain().focus().undo().run()}
           disabled={!editorState?.canUndo}
-          className="border"
+          className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
           Undo
         </button>
@@ -51,7 +52,7 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           type="button"
           onClick={() => editor?.chain().focus().redo().run()}
           disabled={!editorState?.canRedo}
-          className="border"
+          className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"
         >
           Redo
         </button>

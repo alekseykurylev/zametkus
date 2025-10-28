@@ -6,7 +6,7 @@ function AppShellRoot({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="app-shell"
       className={cx(
-        "m-3 flex h-[calc(100vh-(--spacing(6)))] overflow-hidden",
+        "m-3 flex h-[calc(100vh-(--spacing(6)))] overflow-hidden rounded-2xl",
         className,
       )}
       {...props}
@@ -14,20 +14,6 @@ function AppShellRoot({ className, ...props }: ComponentProps<"div">) {
   );
 }
 AppShellRoot.displayName = "AppShell.Root";
-
-function AppShellSideBar({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="app-shell-sidebar"
-      className={cx(
-        "flex w-64 shrink-0 flex-col rounded-2xl border border-white/10 bg-neutral-800/50 p-4",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
-AppShellSideBar.displayName = "AppShell.SideBar";
 
 function AppShellHeader({ className, ...props }: ComponentProps<"div">) {
   return (
@@ -39,6 +25,20 @@ function AppShellHeader({ className, ...props }: ComponentProps<"div">) {
   );
 }
 AppShellHeader.displayName = "AppShell.Header";
+
+function AppShellSideBar({ className, ...props }: ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="app-shell-sidebar"
+      className={cx(
+        "flex w-64 shrink-0 flex-col rounded-2xl bg-neutral-950 p-4",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+AppShellSideBar.displayName = "AppShell.SideBar";
 
 function AppShellList({ className, ...props }: ComponentProps<"div">) {
   return (
@@ -66,7 +66,7 @@ function AppShellNote({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       data-slot="app-shell-note"
-      className={cx("w-full", className)}
+      className={cx("w-full rounded-2xl bg-neutral-900", className)}
       {...props}
     />
   );

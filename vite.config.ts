@@ -18,8 +18,8 @@ export default defineConfig({
         start_url: "/",
         lang: "ru-RU",
         display: "standalone",
-        theme_color: "#f3f4f6",
-        background_color: "#f3f4f6",
+        theme_color: "#0a0a0a",
+        background_color: "#0a0a0a",
         icons: [
           {
             src: "/web-app-manifest-192x192.png",

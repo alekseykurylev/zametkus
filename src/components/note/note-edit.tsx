@@ -23,6 +23,12 @@ export function NoteEdit({ note }: { note: Note }) {
     shouldRerenderOnTransaction: true,
     autofocus: "start",
     editorProps: {
+      handlePaste: (view, event) => {
+        event.preventDefault();
+        const text = event.clipboardData?.getData("text/plain") || "";
+        view.dispatch(view.state.tr.insertText(text));
+        return true;
+      },
       attributes: {
         autocomplete: "off",
         autocorrect: "off",

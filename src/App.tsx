@@ -16,7 +16,7 @@ function App() {
     <AppShell.Root>
       <AppShell.SideBar>
         <AppShell.Header>
-          <h1 className="mb-2 text-2xl">Заметкус</h1>
+          <h1 className="text-2xl">Редактус</h1>
         </AppShell.Header>
         <AppShell.List>
           <NotesList />

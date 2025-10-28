@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { cva, type VariantProps } from "cva";
 
 const button = cva({
-  base: "rounded-full border border-neutral-600 bg-neutral-700/40 p-2 hover:not-disabled:bg-neutral-700/80",
+  base: "rounded-4xl bg-neutral-700/40 p-2 ring ring-white/20 backdrop-blur-sm hover:not-disabled:bg-neutral-700/80",
   variants: {
     disabled: {
       false: null,

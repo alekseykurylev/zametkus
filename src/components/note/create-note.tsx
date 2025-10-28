@@ -1,4 +1,6 @@
-import { useNote, useNoteActions, useNoteActive } from "../lib/store.ts";
+import { SquarePen } from "lucide-react";
+import { useNote, useNoteActions, useNoteActive } from "../../lib/store.ts";
+import { Button } from "../ui/button.tsx";
 
 export function CreateNote() {
   const activeId = useNoteActive();
@@ -12,14 +14,13 @@ export function CreateNote() {
   const isDisabled = note?.title?.length === 0;
 
   return (
-    <button
+    <Button
       key={note?.id}
-      className="border p-2 disabled:border-gray-200"
       disabled={isDisabled}
       onPointerDown={(e) => e.preventDefault()}
       onClick={handleCreateNote}
     >
-      Новая заметка
-    </button>
+      <SquarePen size={16} />
+    </Button>
   );
 }

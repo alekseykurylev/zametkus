@@ -20,7 +20,7 @@ function AppShellSideBar({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="app-shell-sidebar"
       className={cx(
-        "flex w-64 shrink-0 flex-col rounded-2xl border border-neutral-800 bg-neutral-950/25 p-4 text-white",
+        "flex w-64 shrink-0 flex-col rounded-2xl border border-neutral-700 bg-neutral-950/25 p-4",
         className,
       )}
       {...props}

@@ -80,7 +80,7 @@ function AppShellNote({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="app-shell-note"
       className={cx(
-        "flex h-full w-full flex-col rounded-2xl bg-zinc-900 ring ring-white/10 max-md:min-w-full",
+        "z-10 flex h-full w-full flex-col rounded-2xl bg-zinc-900 ring ring-white/10 max-md:min-w-full",
         className,
       )}
       {...props}

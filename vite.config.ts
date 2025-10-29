@@ -20,6 +20,7 @@ export default defineConfig({
         display: "standalone",
         theme_color: "red",
         background_color: "red",
+        display_override: ["window-controls-overlay"],
         icons: [
           {
             src: "/web-app-manifest-192x192.png",

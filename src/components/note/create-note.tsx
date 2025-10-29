@@ -15,7 +15,7 @@ export function CreateNote() {
 
   return (
     <Button
-      key={note?.id}
+      key={activeId}
       disabled={isDisabled}
       onPointerDown={(e) => e.preventDefault()}
       onClick={handleCreateNote}

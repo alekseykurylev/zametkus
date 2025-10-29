@@ -1,5 +1,5 @@
 import { useNoteActions, useNoteActive, useNotes } from "../lib/store.ts";
-import { Item } from "./ui/item.tsx";
+import { Item } from "./ui";
 
 export function NotesList() {
   const notes = useNotes();
@@ -11,7 +11,7 @@ export function NotesList() {
       {notes.map((note) => (
         <Item
           key={note.id}
-          className={note.id === activeId ? "bg-neutral-800" : ""}
+          data-active={note.id === activeId}
           onClick={() => setActive(note.id)}
         >
           <div>{note.title || "Без названия"}</div>

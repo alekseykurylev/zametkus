@@ -2,11 +2,11 @@ import type { ComponentProps } from "react";
 import { cva, type VariantProps } from "cva";
 
 const button = cva({
-  base: "rounded-4xl bg-neutral-700/40 p-2 ring ring-white/20 backdrop-blur-sm hover:not-disabled:bg-neutral-700/80",
+  base: "hover:not-disabled:bg-accent/50 inline-flex shrink-0 rounded-md p-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   variants: {
     disabled: {
       false: null,
-      true: "disabled:bg-neutral-700/20 disabled:text-white/30",
+      true: "disabled:text-white/30",
     },
   },
   defaultVariants: {

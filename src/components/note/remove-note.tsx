@@ -1,6 +1,6 @@
 import { useNoteActions, useNoteActive } from "../../lib/store.ts";
 import { Trash2 } from "lucide-react";
-import { Button } from "../ui/button.tsx";
+import { Button } from "../ui";
 
 export function RemoveNote() {
   const activeId = useNoteActive();
@@ -12,7 +12,7 @@ export function RemoveNote() {
 
   return (
     <Button onClick={handleRemove}>
-      <Trash2 size="16" />
+      <Trash2 />
     </Button>
   );
 }

@@ -1,6 +1,6 @@
 import { SquarePen } from "lucide-react";
 import { useNote, useNoteActions, useNoteActive } from "../../lib/store.ts";
-import { Button } from "../ui/button.tsx";
+import { Button } from "../ui";
 
 export function CreateNote() {
   const activeId = useNoteActive();
@@ -20,7 +20,7 @@ export function CreateNote() {
       onPointerDown={(e) => e.preventDefault()}
       onClick={handleCreateNote}
     >
-      <SquarePen size={16} />
+      <SquarePen />
     </Button>
   );
 }

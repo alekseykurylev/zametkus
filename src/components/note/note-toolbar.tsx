@@ -2,7 +2,7 @@ import { type Editor, useEditorState } from "@tiptap/react";
 import { Collapsible } from "@base-ui-components/react/collapsible";
 import { Bold, Redo, Undo, PanelLeftIcon } from "lucide-react";
 import { RemoveNote } from "./remove-note.tsx";
-import { Button } from "../ui/button.tsx";
+import { Button } from "../ui";
 import { CreateNote } from "./create-note.tsx";
 
 export function NoteToolbar({ editor }: { editor: Editor }) {
@@ -21,8 +21,8 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
   return (
     <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
       <div className="flex items-center gap-6">
-        <Collapsible.Trigger>
-          <PanelLeftIcon size={16} />
+        <Collapsible.Trigger render={Button}>
+          <PanelLeftIcon />
         </Collapsible.Trigger>
         <CreateNote />
         <div className="flex items-center gap-2">
@@ -31,19 +31,19 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
             disabled={!editorState?.canBold}
             // className={editorState?.isBold ? "is-active border" : "border"}
           >
-            <Bold size="16" />
+            <Bold />
           </Button>
           <Button
             onClick={() => editor?.chain().focus().undo().run()}
             disabled={!editorState?.canUndo}
           >
-            <Undo size="16" />
+            <Undo />
           </Button>
           <Button
             onClick={() => editor?.chain().focus().redo().run()}
             disabled={!editorState?.canRedo}
           >
-            <Redo size="16" />
+            <Redo />
           </Button>
         </div>
       </div>

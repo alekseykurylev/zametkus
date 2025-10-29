@@ -42,7 +42,10 @@ function AppShellSidebar({
       className="w-[var(--collapsible-panel-width)] transition-all ease-out data-[ending-style]:w-0 data-[starting-style]:w-0"
     >
       <div
-        className={cx("flex w-64 shrink-0 flex-col p-4", className)}
+        className={cx(
+          "flex h-full w-64 shrink-0 flex-col overflow-hidden p-4",
+          className,
+        )}
         {...props}
       />
     </Collapsible.Panel>

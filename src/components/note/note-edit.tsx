@@ -22,7 +22,7 @@ export function NoteEdit({ note }: { note: Note }) {
     extensions: [StarterKit, CharacterCount],
     immediatelyRender: true,
     shouldRerenderOnTransaction: true,
-    autofocus: "all",
+    autofocus: "start",
     editorProps: {
       handlePaste: (view, event) => {
         event.preventDefault();

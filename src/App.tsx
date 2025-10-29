@@ -14,7 +14,7 @@ function App() {
 
   return (
     <AppShell.Root>
-      <AppShell.SideBar>
+      <AppShell.Sidebar>
         <AppShell.Header>
           <h1 className="text-2xl">Редактус</h1>
         </AppShell.Header>
@@ -22,7 +22,7 @@ function App() {
           <NotesList />
         </AppShell.List>
         <AppShell.Footer />
-      </AppShell.SideBar>
+      </AppShell.Sidebar>
       <AppShell.Note>
         <Note />
       </AppShell.Note>

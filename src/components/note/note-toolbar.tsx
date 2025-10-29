@@ -1,6 +1,7 @@
 import { type Editor, useEditorState } from "@tiptap/react";
+import { Collapsible } from "@base-ui-components/react/collapsible";
+import { Bold, Redo, Undo, PanelLeftIcon } from "lucide-react";
 import { RemoveNote } from "./remove-note.tsx";
-import { Bold, Redo, Undo } from "lucide-react";
 import { Button } from "../ui/button.tsx";
 import { CreateNote } from "./create-note.tsx";
 
@@ -20,6 +21,9 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
   return (
     <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
       <div className="flex items-center gap-6">
+        <Collapsible.Trigger>
+          <PanelLeftIcon size={16} />
+        </Collapsible.Trigger>
         <CreateNote />
         <div className="flex items-center gap-2">
           <Button
@@ -29,20 +33,6 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           >
             <Bold size="16" />
           </Button>
-          {/*<button*/}
-          {/*  type="button"*/}
-          {/*  onClick={() => editor?.chain().focus().unsetAllMarks().run()}*/}
-          {/*  className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"*/}
-          {/*>*/}
-          {/*  Clear marks*/}
-          {/*</button>*/}
-          {/*<button*/}
-          {/*  type="button"*/}
-          {/*  onClick={() => editor?.chain().focus().clearNodes().run()}*/}
-          {/*  className="rounded-full border border-neutral-600 bg-neutral-700/50 p-2"*/}
-          {/*>*/}
-          {/*  Clear nodes*/}
-          {/*</button>*/}
           <Button
             onClick={() => editor?.chain().focus().undo().run()}
             disabled={!editorState?.canUndo}

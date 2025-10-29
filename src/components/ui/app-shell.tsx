@@ -1,14 +1,19 @@
 import type { ComponentProps } from "react";
+import { Collapsible } from "@base-ui-components/react/collapsible";
 import { cx } from "../../lib/cva";
+import { useIsMobile } from "../../lib/hooks.ts";
 
-function AppShellRoot({ className, ...props }: ComponentProps<"div">) {
+function AppShellRoot({
+  className,
+  ...props
+}: ComponentProps<typeof Collapsible.Root>) {
+  const isMobile = useIsMobile();
+
   return (
-    <div
+    <Collapsible.Root
       data-slot="app-shell"
-      className={cx(
-        "root m-3 flex h-[calc(100vh-(--spacing(6)))] overflow-hidden",
-        className,
-      )}
+      className={cx("root flex h-screen overflow-hidden p-3", className)}
+      defaultOpen={!isMobile}
       {...props}
     />
   );
@@ -26,19 +31,23 @@ function AppShellHeader({ className, ...props }: ComponentProps<"div">) {
 }
 AppShellHeader.displayName = "AppShell.Header";
 
-function AppShellSideBar({ className, ...props }: ComponentProps<"div">) {
+function AppShellSidebar({
+  className,
+  ...props
+}: ComponentProps<typeof Collapsible.Panel>) {
   return (
-    <div
+    <Collapsible.Panel
       data-slot="app-shell-sidebar"
-      className={cx(
-        "flex w-64 shrink-0 flex-col bg-neutral-950 p-4",
-        className,
-      )}
-      {...props}
-    />
+      className="w-[var(--collapsible-panel-width)] transition-all ease-out data-[ending-style]:w-0 data-[starting-style]:w-0"
+    >
+      <div
+        className={cx("flex w-64 shrink-0 flex-col p-4", className)}
+        {...props}
+      />
+    </Collapsible.Panel>
   );
 }
-AppShellSideBar.displayName = "AppShell.SideBar";
+AppShellSidebar.displayName = "AppShell.Sidebar";
 
 function AppShellList({ className, ...props }: ComponentProps<"div">) {
   return (
@@ -75,7 +84,7 @@ AppShellNote.displayName = "AppShell.Note";
 
 export {
   AppShellRoot as Root,
-  AppShellSideBar as SideBar,
+  AppShellSidebar as Sidebar,
   AppShellHeader as Header,
   AppShellList as List,
   AppShellFooter as Footer,

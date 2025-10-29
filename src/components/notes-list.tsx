@@ -14,7 +14,7 @@ export function NotesList() {
           className={note.id === activeId ? "bg-neutral-800" : ""}
           onClick={() => setActive(note.id)}
         >
-          <div>{note.title || "Новая заметка"}</div>
+          <div>{note.title || "Без названия"}</div>
           <div>{new Date(note.updatedAt).toLocaleString()}</div>
         </Item>
       ))}

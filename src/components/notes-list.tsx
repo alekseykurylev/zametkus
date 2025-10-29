@@ -10,6 +10,7 @@ export function NotesList() {
     <div className="flex flex-col">
       {notes.map((note) => (
         <Item
+          key={note.id}
           className={note.id === activeId ? "bg-neutral-800" : ""}
           onClick={() => setActive(note.id)}
         >

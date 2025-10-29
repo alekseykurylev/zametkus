@@ -16,12 +16,30 @@ type State = {
 };
 
 const useNotesStore = create<State>((set, get) => {
+  const createEmptyNote = async (): Promise<Note> => {
+    const note: Note = {
+      id: uuidv4(),
+      title: "",
+      content: "",
+      updatedAt: Date.now(),
+    };
+    await putNote(note);
+    return note;
+  };
+
   return {
     notes: [],
     actions: {
       load: async () => {
-        const notes = await getAllNotes();
+        let notes = await getAllNotes();
         notes.sort((a, b) => b.updatedAt - a.updatedAt);
+
+        if (notes.length === 0) {
+          console.log("Notes");
+          const newNote = await createEmptyNote();
+          notes = [newNote];
+        }
+
         set({ notes: notes, activeId: notes[0]?.id ?? null });
       },
       createNote: async () => {

@@ -6,7 +6,7 @@ function AppShellRoot({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="app-shell"
       className={cx(
-        "m-3 flex h-[calc(100vh-(--spacing(6)))] overflow-hidden rounded-2xl",
+        "m-3 flex h-[calc(100vh-(--spacing(6)))] overflow-hidden",
         className,
       )}
       {...props}
@@ -19,7 +19,7 @@ function AppShellHeader({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       data-slot="app-shell-header"
-      className={cx("pb-4", className)}
+      className={cx("px-4 pb-4", className)}
       {...props}
     />
   );
@@ -31,7 +31,7 @@ function AppShellSideBar({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="app-shell-sidebar"
       className={cx(
-        "flex w-64 shrink-0 flex-col rounded-2xl bg-neutral-950 p-4",
+        "flex w-64 shrink-0 flex-col bg-neutral-950 p-4",
         className,
       )}
       {...props}

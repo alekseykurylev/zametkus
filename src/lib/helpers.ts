@@ -4,5 +4,11 @@ export function getNoteTitle(editor: Editor) {
   if (!editor) return "";
   const text = editor.getText().trim();
   if (!text) return "";
-  return text.split("\n")[0];
+
+  let title = text.split("\n")[0].trim();
+  if (title.length > 50) {
+    title = title.slice(0, 50).trimEnd() + "…";
+  }
+
+  return title;
 }

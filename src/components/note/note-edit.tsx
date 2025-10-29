@@ -55,7 +55,7 @@ export function NoteEdit({ note }: { note: Note }) {
       <EditorContent
         editor={editor}
         role="presentation"
-        className={cx("grow overflow-y-auto *:h-full *:px-6")}
+        className={cx("grow overflow-y-auto *:h-full *:p-6")}
       />
       <NoteFooter editor={editor} />
     </>

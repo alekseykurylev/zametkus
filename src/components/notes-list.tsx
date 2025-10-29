@@ -1,5 +1,5 @@
 import { useNoteActions, useNoteActive, useNotes } from "../lib/store.ts";
-import { cx } from "../lib/cva.ts";
+import { Item } from "./ui/item.tsx";
 
 export function NotesList() {
   const notes = useNotes();
@@ -7,18 +7,16 @@ export function NotesList() {
   const { setActive } = useNoteActions();
 
   return (
-    <ul>
+    <div className="flex flex-col">
       {notes.map((note) => (
-        <li key={note.id}>
-          <button
-            onClick={() => setActive(note.id)}
-            className={cx(note.id === activeId && "text-red-700")}
-          >
-            <div>{note.title || "Новая заметка"}</div>
-            <div>{new Date(note.updatedAt).toLocaleString()}</div>
-          </button>
-        </li>
+        <Item
+          className={note.id === activeId ? "bg-neutral-800" : ""}
+          onClick={() => setActive(note.id)}
+        >
+          <div>{note.title || "Новая заметка"}</div>
+          <div>{new Date(note.updatedAt).toLocaleString()}</div>
+        </Item>
       ))}
-    </ul>
+    </div>
   );
 }

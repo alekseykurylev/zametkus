@@ -5,7 +5,7 @@ export function NoteFooter({ editor }: { editor: Editor }) {
   const charactersCount = editor?.storage.characterCount.characters();
 
   return (
-    <div className="flex items-center justify-between px-6 py-4 text-xs">
+    <div className="flex items-center justify-between border-t border-white/10 px-6 py-4 text-xs">
       <div>123</div>
       <div className="flex items-center gap-3">
         <div>{charactersCount} characters</div>

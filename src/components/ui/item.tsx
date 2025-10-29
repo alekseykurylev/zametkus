@@ -5,7 +5,7 @@ export function Item({ className, ...props }: ComponentProps<"button">) {
   return (
     <button
       className={cx(
-        "rounded-md bg-transparent p-4 text-left data-[active='true']:bg-neutral-700",
+        "rounded-md bg-transparent p-4 text-left data-[active='true']:bg-white/5",
         className,
       )}
       {...props}

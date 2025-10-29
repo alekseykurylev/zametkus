@@ -6,7 +6,7 @@ function AppShellRoot({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="app-shell"
       className={cx(
-        "m-3 flex h-[calc(100vh-(--spacing(6)))] overflow-hidden",
+        "root m-3 flex h-[calc(100vh-(--spacing(6)))] overflow-hidden",
         className,
       )}
       {...props}

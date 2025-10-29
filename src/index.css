@@ -6,7 +6,7 @@
     }
 
     body {
-        @apply bg-neutral-950 text-neutral-200;
+        @apply bg-neutral-950 text-neutral-200 relative;
     }
 
     :root {
@@ -16,6 +16,8 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+
+    .root { @apply isolate; }
 
     .tiptap {
         &.ProseMirror > * {

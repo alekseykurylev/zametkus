@@ -21,7 +21,7 @@ function App() {
     <AppShell.Root>
       <AppShell.Sidebar>
         <AppShell.Header>
-          <h1 className="text-2xl">Редактус</h1>
+          <h1 className="text-2xl font-bold">Редактус</h1>
         </AppShell.Header>
         <AppShell.List>
           <NotesList />

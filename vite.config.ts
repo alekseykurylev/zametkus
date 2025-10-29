@@ -18,8 +18,8 @@ export default defineConfig({
         start_url: "/",
         lang: "ru-RU",
         display: "standalone",
-        theme_color: "#262626",
-        background_color: "#262626",
+        theme_color: "#09090b",
+        background_color: "#09090b",
         display_override: ["window-controls-overlay"],
         icons: [
           {

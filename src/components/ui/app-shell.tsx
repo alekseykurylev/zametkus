@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 import { Collapsible } from "@base-ui-components/react/collapsible";
 import { cx } from "../../lib/cva";
 import { useIsMobile } from "../../lib/hooks.ts";
@@ -11,6 +11,7 @@ function AppShellRoot({
 
   return (
     <Collapsible.Root
+      key={isMobile ? "mobile" : "other"}
       data-slot="app-shell"
       className={cx("root flex h-screen overflow-hidden p-3", className)}
       defaultOpen={!isMobile}

@@ -1,16 +1,21 @@
 import { AppShell } from "./components/ui";
-import { useNoteActions } from "./lib/store.ts";
+import { useNote, useNoteActions, useNoteActive } from "./lib/store.ts";
 import { useEffect } from "react";
 import { NotesList } from "./components/notes-list.tsx";
-import { Note } from "./components/note/note.tsx";
+import { NoteEdit } from "./components/note/note-edit.tsx";
 
 function App() {
   const { load } = useNoteActions();
+
+  const activeId = useNoteActive();
+  const note = useNote(activeId);
 
   useEffect(() => {
     load().catch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!note) return null;
 
   return (
     <AppShell.Root>
@@ -24,7 +29,9 @@ function App() {
         <AppShell.Footer />
       </AppShell.Sidebar>
       <AppShell.Note>
-        <Note />
+        <div className="flex h-full flex-col">
+          <NoteEdit key={activeId} note={note} />
+        </div>
       </AppShell.Note>
     </AppShell.Root>
   );

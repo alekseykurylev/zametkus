@@ -29,9 +29,7 @@ function App() {
         <AppShell.Footer />
       </AppShell.Sidebar>
       <AppShell.Note>
-        <div className="flex h-full flex-col">
-          <NoteEdit key={activeId} note={note} />
-        </div>
+        <NoteEdit key={activeId} note={note} />
       </AppShell.Note>
     </AppShell.Root>
   );

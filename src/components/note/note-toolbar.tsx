@@ -48,7 +48,6 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
           </Button>
         </div>
       </div>
-
       <RemoveNote />
     </div>
   );

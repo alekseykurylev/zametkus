@@ -19,7 +19,7 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
   });
 
   return (
-    <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+    <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
       <div className="flex gap-6">
         <Collapsible.Trigger render={Button}>
           <PanelLeftIcon />

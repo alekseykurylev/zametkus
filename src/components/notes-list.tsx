@@ -1,5 +1,5 @@
-import { useNoteActions, useNoteActive, useNotes } from "../lib/store.ts";
-import { cx } from "../lib/cva.ts";
+import { useNoteActions, useNoteActive, useNotes } from "@/lib/store.ts";
+import { cx } from "cva";
 
 export function NotesList() {
   const notes = useNotes();

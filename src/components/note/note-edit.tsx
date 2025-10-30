@@ -3,10 +3,10 @@ import { CharacterCount } from "@tiptap/extensions";
 import StarterKit from "@tiptap/starter-kit";
 import { useDebouncedCallback } from "use-debounce";
 import { ScrollArea } from "@base-ui-components/react/scroll-area";
-import { cx } from "../../lib/cva.ts";
-import { useNoteActions, useNotes } from "../../lib/store.ts";
-import type { Note } from "../../lib/types.ts";
-import { getNoteTitle } from "../../lib/helpers.ts";
+import { cx } from "@/lib/cva.ts";
+import { useNoteActions, useNotes } from "@/lib/store.ts";
+import type { Note } from "@/lib/types.ts";
+import { getNoteTitle } from "@/lib/helpers.ts";
 import { NoteToolbar } from "./note-toolbar.tsx";
 import { NoteFooter } from "./note-footer.tsx";
 

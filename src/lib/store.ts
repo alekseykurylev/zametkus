@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { getAllNotes, putNote, delNote } from "./db";
 import { v4 as uuidv4 } from "uuid";
-import type { Note } from "./types.ts";
+import type { Note } from "@/lib/types.ts";
+import { delNote, getAllNotes, putNote } from "@/lib/db.ts";
 
 type State = {
   notes: Note[];

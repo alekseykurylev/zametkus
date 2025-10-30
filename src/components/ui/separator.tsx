@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 import { Separator as SeparatorPrimitive } from "@base-ui-components/react/separator";
-import { cx } from "../../lib/cva";
+import { cx } from "@/lib/cva.ts";
 
 export function Separator({
   orientation,

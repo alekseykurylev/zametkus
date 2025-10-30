@@ -1,5 +1,5 @@
 import { openDB, type DBSchema } from "idb";
-import type { Note } from "./types.ts";
+import type { Note } from "@/lib/types.ts";
 
 const DB_NAME = "notes-db";
 const STORE = "notes";

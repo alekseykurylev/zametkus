@@ -1,6 +1,6 @@
-import { useNoteActions, useNoteActive, useNotes } from "../../lib/store.ts";
+import { useNoteActions, useNoteActive, useNotes } from "@/lib/store.ts";
 import { Trash2 } from "lucide-react";
-import { Button } from "../ui";
+import { Button } from "@/components/ui";
 
 export function RemoveNote() {
   const activeId = useNoteActive();

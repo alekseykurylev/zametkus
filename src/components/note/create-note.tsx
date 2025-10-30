@@ -1,5 +1,5 @@
 import { SquarePen } from "lucide-react";
-import { useNote, useNoteActions, useNoteActive } from "../../lib/store.ts";
+import { useNote, useNoteActions, useNoteActive } from "@/lib/store.ts";
 import { Button } from "../ui";
 
 export function CreateNote() {

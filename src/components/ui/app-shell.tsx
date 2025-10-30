@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react";
 import { Collapsible } from "@base-ui-components/react/collapsible";
-import { cx } from "../../lib/cva";
-import { useIsMobile } from "../../lib/hooks.ts";
+import { cx } from "@/lib/cva.ts";
+import { useIsMobile } from "@/lib/hooks.ts";
 
 function AppShellRoot({
   className,

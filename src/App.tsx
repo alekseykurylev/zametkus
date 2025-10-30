@@ -1,8 +1,8 @@
-import { AppShell } from "./components/ui";
-import { useNote, useNoteActions, useNoteActive } from "./lib/store.ts";
 import { useEffect } from "react";
-import { NotesList } from "./components/notes-list.tsx";
-import { NoteEdit } from "./components/note/note-edit.tsx";
+import { AppShell } from "@/components/ui";
+import { useNote, useNoteActions, useNoteActive } from "@/lib/store.ts";
+import { NotesList } from "@/components/notes-list.tsx";
+import { NoteEdit } from "@/components/note/note-edit.tsx";
 
 function App() {
   const { load } = useNoteActions();

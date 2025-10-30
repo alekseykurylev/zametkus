@@ -1,8 +1,8 @@
 import { type Editor, useEditorState } from "@tiptap/react";
 import { Collapsible } from "@base-ui-components/react/collapsible";
 import { Bold, Redo, Undo, PanelLeftIcon } from "lucide-react";
+import { Button, Separator } from "@/components/ui";
 import { RemoveNote } from "./remove-note.tsx";
-import { Button, Separator } from "../ui";
 import { CreateNote } from "./create-note.tsx";
 
 export function NoteToolbar({ editor }: { editor: Editor }) {

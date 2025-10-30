@@ -2,7 +2,7 @@ import { type Editor, useEditorState } from "@tiptap/react";
 import { Collapsible } from "@base-ui-components/react/collapsible";
 import { Bold, Redo, Undo, PanelLeftIcon } from "lucide-react";
 import { RemoveNote } from "./remove-note.tsx";
-import { Button } from "../ui";
+import { Button, Separator } from "../ui";
 import { CreateNote } from "./create-note.tsx";
 
 export function NoteToolbar({ editor }: { editor: Editor }) {
@@ -20,10 +20,11 @@ export function NoteToolbar({ editor }: { editor: Editor }) {
 
   return (
     <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-      <div className="flex items-center gap-6">
+      <div className="flex gap-6">
         <Collapsible.Trigger render={Button}>
           <PanelLeftIcon />
         </Collapsible.Trigger>
+        <Separator orientation="vertical" />
         <CreateNote />
         <div className="flex items-center gap-2">
           <Button
